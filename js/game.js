@@ -1,6 +1,7 @@
 import { buscarPalavras, salvarPartida } from "./api.js";
 
 const btnReiniciar = document.getElementById("btnReiniciar");
+const btnJogarNovamente = document.getElementById("jogarNovamente");
 const cards = document.querySelectorAll(".card");
 const tentativasHTML = document.getElementById("tentativas");
 
@@ -19,7 +20,20 @@ export async function iniciar() {
     card.textContent = "?";
     card.dataset.palavra = embaralhadas[x];
     card.onclick = () => virar(card);
+
+    card.classList.remove("selecionado"); // <-- defaz a ação de seleção da partida anterior
   });
+
+  btnJogarNovamente.style.display = "none";
+  btnReiniciar.style.display = "flex";
+
+  primeira = null;
+  segunda = null;
+  tentativas = 0;
+  bloqueado = false;
+  cont = 0;
+
+  updateTentativas();
 }
 
 function virar(card) {
@@ -38,10 +52,11 @@ function verificar() {
   if (primeira.textContent == segunda.textContent) {
     primeira = null;
     segunda = null;
-    console.log("acertou...");
     cont++;
     if (cont === 6) {
       salvarPartida();
+      alert("Parabéns! Ganhou a partida...");
+      jogarNovamente();
     }
   } else {
     bloqueado = true;
@@ -71,6 +86,13 @@ function embaralhar(array) {
 
 function updateTentativas() {
   tentativasHTML.innerText = tentativas;
+}
+
+function jogarNovamente() {
+  btnJogarNovamente.style.display = "flex";
+  btnReiniciar.style.display = "none";
+
+  btnJogarNovamente.onclick = () => iniciar();
 }
 
 btnReiniciar.onclick = () => iniciar();

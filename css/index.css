@@ -46,6 +46,10 @@ button:hover{
 	box-shadow: 0 4px 8px #94568d;
 }
 
+#jogarNovamente {
+	display: none;
+}
+
 .board{
 	display: grid;
 	grid-template-columns: repeat(3, 120px);
