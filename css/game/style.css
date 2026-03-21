@@ -15,3 +15,7 @@
 .card.selecionado{
 	background: #800080;
 }
+
+#voltar {
+    margin: 1rem;
+}

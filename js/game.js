@@ -12,6 +12,7 @@ let bloqueado = false;
 
 let cont = 0;
 
+
 export async function iniciar() {
   const palavrasBuscadas = await buscarPalavras();
 
@@ -21,7 +22,7 @@ export async function iniciar() {
     card.dataset.palavra = embaralhadas[x];
     card.onclick = () => virar(card);
 
-    card.classList.remove("selecionado"); // <-- defaz a ação de seleção da partida anterior
+    card.classList.remove("selecionado"); // <-- desfaz a ação de seleção da partida anterior
   });
 
   btnJogarNovamente.style.display = "none";

@@ -1,3 +1,6 @@
 @import 'variables.css';
+
 @import 'body.css';
-@import 'index.css';
+
+@import 'index/style.css';
+@import 'game/style.css';
