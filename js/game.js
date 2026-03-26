@@ -12,7 +12,6 @@ let bloqueado = false;
 
 let cont = 0;
 
-
 export async function iniciar() {
   const palavrasBuscadas = await buscarPalavras();
 
@@ -56,7 +55,9 @@ function verificar() {
     cont++;
     if (cont === 6) {
       salvarPartida();
-      alert("Parabéns! Ganhou a partida...");
+      setTimeout(() => {
+        alert("Parabéns! Ganhou a partida...");
+      }, 800);
       jogarNovamente();
     }
   } else {
