@@ -65,7 +65,7 @@ function verificar() {
     cont++;
     if (cont === 6) {
       clearInterval(timerInterval);
-      const nomeJogador = localStorage.getItem("nome") || "Desconhecido";
+      const nomeJogador = localStorage.getItem("nome");
       const dadosPartida = {
         nome: nomeJogador,
         tentativas: tentativas,
