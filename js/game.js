@@ -57,7 +57,7 @@ function verificar() {
       salvarPartida();
       setTimeout(() => {
         alert("Parabéns! Ganhou a partida...");
-      }, 800);
+      }, 500);
       jogarNovamente();
     }
   } else {

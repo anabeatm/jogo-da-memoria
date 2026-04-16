@@ -19,3 +19,7 @@
 #voltar {
     margin: 1rem;
 }
+
+#play{
+	display: none;
+}

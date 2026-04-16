@@ -5,6 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="css/main.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
   </head>
   <body>
     <header>
@@ -14,6 +18,25 @@
       <button id="btnReiniciar">Reiniciar</button>
       <button id="btnAlterarTema">Alterar Tema</button>
     </header>
+
+    <section id="timer">
+      <p>Temporizador</p>
+      <div id="display">00:00</div>
+      <button onclick="parar()">
+        <span id="stop" class="material-symbols-outlined"> stop_circle </span>
+        <span id="play" class="material-symbols-outlined"> play_circle </span>
+      </button>
+      <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+            "FILL" 0,
+            "wght" 400,
+            "GRAD" 0,
+            "opsz" 24;
+        }
+      </style>
+    </section>
+
     <main>
       <section class="board">
         <button class="card">?</button>
