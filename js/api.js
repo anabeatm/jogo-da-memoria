@@ -40,3 +40,14 @@ export async function salvarPartida(partida) {
     console.log(error);
   }
 }
+
+export async function buscarRanking() {
+  try {
+    const response = await fetch(`${URL}/api/ranking.php`);
+    if (!response.ok) throw new Error(`Erro ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.log("Erro ao buscar ranking:", error);
+    return [];
+  }
+}

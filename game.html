@@ -19,25 +19,24 @@
       <button id="btnAlterarTema">Alterar Tema</button>
     </header>
 
-    <section id="timer">
-      <p>Temporizador</p>
-      <div id="display">00:00</div>
-      <button onclick="parar()">
-        <span id="stop" class="material-symbols-outlined"> stop_circle </span>
-        <span id="play" class="material-symbols-outlined"> play_circle </span>
-      </button>
-      <style>
-        .material-symbols-outlined {
-          font-variation-settings:
-            "FILL" 0,
-            "wght" 400,
-            "GRAD" 0,
-            "opsz" 24;
-        }
-      </style>
-    </section>
-
     <main>
+      <section id="timer">
+        <p>Temporizador</p>
+        <div id="display">00:00</div>
+        <button onclick="parar()">
+          <span id="stop" class="material-symbols-outlined"> stop_circle </span>
+          <span id="play" class="material-symbols-outlined"> play_circle </span>
+        </button>
+        <style>
+          .material-symbols-outlined {
+            font-variation-settings:
+              "FILL" 0,
+              "wght" 400,
+              "GRAD" 0,
+              "opsz" 24;
+          }
+        </style>
+      </section>
       <section class="board">
         <button class="card">?</button>
         <button class="card">?</button>
@@ -51,6 +50,12 @@
         <button class="card">?</button>
         <button class="card">?</button>
         <button class="card">?</button>
+      </section>
+      <section id="rankingSection">
+        <h2>🏆 Ranking</h2>
+        <ol id="listaRanking">
+          <li>Carregando...</li>
+        </ol>
       </section>
     </main>
 

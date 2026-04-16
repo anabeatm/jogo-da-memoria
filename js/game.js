@@ -1,4 +1,5 @@
 import { buscarPalavras, salvarPartida } from "./api.js";
+import { carregarRanking } from "./ranking.js";
 
 const btnReiniciar = document.getElementById("btnReiniciar");
 const btnJogarNovamente = document.getElementById("jogarNovamente");
@@ -34,6 +35,7 @@ export async function iniciar() {
   cont = 0;
 
   updateTentativas();
+  carregarRanking();
 }
 
 function virar(card) {
@@ -54,7 +56,12 @@ function verificar() {
     segunda = null;
     cont++;
     if (cont === 6) {
-      salvarPartida();
+      const nomeJogador = localStorage.getItem("nome") || "Desconhecido";
+      const dadosPartida = {
+        nome: nomeJogador,
+        tentativas: tentativas,
+      };
+      salvarPartida(dadosPartida);
       setTimeout(() => {
         alert("Parabéns! Ganhou a partida...");
       }, 500);

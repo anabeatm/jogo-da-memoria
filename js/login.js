@@ -5,7 +5,7 @@ bntIniciar.onclick = (evento) => {
   const nome = inputNome.value;
   if (nome === "") {
     evento.preventDefault();
-    alert("Preencha todos os campos!");
+    alert("Preencha o campo de nome!");
   } else {
     localStorage.setItem("nome", nome);
   }
