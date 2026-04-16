@@ -23,3 +23,72 @@
 #play{
 	display: none;
 }
+#timer {
+    background: var(--bg-cards);
+    padding: 10px 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid var(--bg-cards);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#timer p {
+    font-size: 0.9rem;
+    margin: 0 0 5px 0;
+}
+
+#display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--bg-button);
+    letter-spacing: 2px;
+}
+#rankingSection {
+    background: var(--bg-cards);
+    border: 1px solid var(--bg-cards);
+    border-radius: 10px 30px;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 22rem;
+}
+
+#rankingSection h2 {
+    color: var(--bg-button);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+#listaRanking {
+    padding-left: 20px;
+    margin: 0;
+}
+
+#listaRanking li {
+    color: #333030;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    letter-spacing: 1px;
+}
+
+#listaRanking li:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 1100px) {
+    #rankingSection {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 30px;
+        width: 30rem;
+    }
+}
