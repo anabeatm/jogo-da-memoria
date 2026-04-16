@@ -23,7 +23,7 @@ export async function salvarPartida(partida) {
   try {
     const response = await fetch(`${URL}/api/salvar.php`, {
       method: "POST",
-      header: {
+      headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(partida),

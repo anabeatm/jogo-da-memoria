@@ -1,40 +1,48 @@
 import { buscarPalavras, salvarPartida } from "./api.js";
 import { carregarRanking } from "./ranking.js";
 
+const board = document.querySelector(".board");
 const btnReiniciar = document.getElementById("btnReiniciar");
 const btnJogarNovamente = document.getElementById("jogarNovamente");
 const cards = document.querySelectorAll(".card");
 const tentativasHTML = document.getElementById("tentativas");
+const displayTimer = document.getElementById("display");
 
 let primeira = null;
 let segunda = null;
 let tentativas = 0;
 let bloqueado = false;
+let tempoGasto = 0;
+let timerInterval = null;
 
 let cont = 0;
 
 export async function iniciar() {
-  const palavrasBuscadas = await buscarPalavras();
-
-  let embaralhadas = embaralhar([...palavrasBuscadas, ...palavrasBuscadas]);
-  cards.forEach((card, x) => {
-    card.textContent = "?";
-    card.dataset.palavra = embaralhadas[x];
-    card.onclick = () => virar(card);
-
-    card.classList.remove("selecionado"); // <-- desfaz a ação de seleção da partida anterior
-  });
-
+  resetarTimer();
+  board.innerHTML = "";
   btnJogarNovamente.style.display = "none";
   btnReiniciar.style.display = "flex";
 
   primeira = null;
   segunda = null;
   tentativas = 0;
-  bloqueado = false;
   cont = 0;
-
+  bloqueado = false;
   updateTentativas();
+
+  const palavrasBuscadas = await buscarPalavras();
+  let embaralhadas = embaralhar([...palavrasBuscadas, ...palavrasBuscadas]);
+
+  embaralhadas.forEach((palavra) => {
+    const card = document.createElement("button");
+    card.classList.add("card");
+    card.textContent = "?";
+    card.dataset.palavra = palavra;
+    card.onclick = () => virar(card);
+    board.appendChild(card);
+  });
+
+  iniciarTimer();
   carregarRanking();
 }
 
@@ -56,10 +64,12 @@ function verificar() {
     segunda = null;
     cont++;
     if (cont === 6) {
+      clearInterval(timerInterval);
       const nomeJogador = localStorage.getItem("nome") || "Desconhecido";
       const dadosPartida = {
         nome: nomeJogador,
         tentativas: tentativas,
+        tempo: tempoGasto,
       };
       salvarPartida(dadosPartida);
       setTimeout(() => {
@@ -102,6 +112,24 @@ function jogarNovamente() {
   btnReiniciar.style.display = "none";
 
   btnJogarNovamente.onclick = () => iniciar();
+}
+
+function iniciarTimer() {
+  tempoGasto = 0;
+  timerInterval = setInterval(() => {
+    tempoGasto++;
+    const min = Math.floor(tempoGasto / 60)
+      .toString()
+      .padStart(2, "0");
+    const sec = (tempoGasto % 60).toString().padStart(2, "0");
+    displayTimer.textContent = `${min}:${sec}`;
+  }, 1000);
+}
+
+function resetarTimer() {
+  clearInterval(timerInterval);
+  tempoGasto = 0;
+  displayTimer.textContent = "00:00";
 }
 
 btnReiniciar.onclick = () => iniciar();
